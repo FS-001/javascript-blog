@@ -1,8 +1,8 @@
 'use strict';
 
 const titleClickHandler = function(event) {
-  console.log('Link was clicked');
-  console.log(event);
+//  console.log('Link was clicked');
+//  console.log(event);
 
 /* remove class 'active' from all articles links */
 
@@ -15,6 +15,12 @@ for(let activeLink of activeLinks) {
 /* add class 'active' to the clicked link */
 
 /* remove class 'active' from all articles */
+
+const activeArticles = document.querySelectorAll('.posts .post.active');
+
+for(let activeArticle of activeArticles) {
+  activeArticle.classList.remove('active');
+}
 
 /* get 'href' attribute from the clicked link */
 
