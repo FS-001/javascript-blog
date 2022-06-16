@@ -50,7 +50,8 @@
   const
     optArticleSelector = '.post',
     optTitleSelector = '.post-title',
-    optTitleListSelector = '.titles';
+    optTitleListSelector = '.titles',
+    optArticleTagsSelector = '.post-tags .list';
 
   function generateTitleLinks() {
 
@@ -106,11 +107,14 @@
 
   // - - - - - - - - - - - - - - - - - - - - - -
   // - - - - G E N E R A T E   T A G S - - - - -
+  // - - - F O R   E A C H   A R T I C L E - - -
   // - - - - - - - - - - - - - - - - - - - - - -
 
   function generateTags(){
 
     /* find all articles */
+    const articles = document.querySelectorAll(optArticleSelector);
+    console.log('articles =', articles);
 
     /* START LOOP: for every article: */
 
@@ -133,7 +137,7 @@
       /* insert HTML of all the links into the tags wrapper */
 
     /* END LOOP: for every article: */
-    
+
   }
 
   generateTags();
