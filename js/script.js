@@ -13,7 +13,7 @@
 const titleClickHandler = function(event) {
   event.preventDefault(); // Do not jump to #
   const clickedElement = this;
-  //console.log('Link was clicked!');
+  console.log('Link was clicked!');
 
   // [DONE] remove class 'active' from all article links
   const activeLinks = document.querySelectorAll('.titles a.active');
@@ -50,6 +50,7 @@ const titleClickHandler = function(event) {
 
 // Make title links collection and assign one event-listener to each link
 const links = document.querySelectorAll('.titles a');
+console.log('links =', links)
 for(let link of links) {
   link.addEventListener('click', titleClickHandler);
 }
@@ -82,6 +83,11 @@ function generateTitleLinks() {
   const articles = document.querySelectorAll(optArticleSelector);
 //  console.log('articles: ', articles);
 
+// LAST COMMIT
+  let html = '';
+// LAST COMMIT
+
+
   for(let article of articles) {
     // get the article id
     const articleId = article.getAttribute('id');
@@ -94,14 +100,23 @@ function generateTitleLinks() {
 
     // create HTML of the link
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-    // console.log('linkHTML =', linkHTML);
+//    console.log('linkHTML =', linkHTML);
 
     // insert link into titleList
 //    titleList.innerHTML = titleList.innerHTML + linkHTML;
-    titleList.insertAdjacentHTML('beforeend', linkHTML);
-
+    // LAST COMMIT
+    // titleList.insertAdjacentHTML('beforeend', linkHTML);
+    html = html + linkHTML;
+    // LAST COMMIT
+    // console.log('html =', html);
   }
-  console.log('titleList.innerHTML', titleList);
+
+
+  //console.log('titleList.innerHTML', titleList);
+  // LAST COMMIT
+  titleList.innerHTML = html;
+  // console.log('titleList.innerHTML', titleList);
+  // LAST COMMIT
 }
 
 // - - - - - - - C O M M A N D S - - - - - - -
