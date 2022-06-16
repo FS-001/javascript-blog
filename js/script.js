@@ -126,9 +126,11 @@
 
       /* make html variable with empty string */
       let html = '';
-      console.log('html =', html);
+      //console.log('html =', html);
 
       /* get tags from data-tags attribute */
+      const articleTags = article.getAttribute('data-tags');
+      console.log('articleTags =', articleTags);
 
       /* split tags into array */
 
