@@ -46,14 +46,7 @@ const titleClickHandler = function(event) {
   //console.log('target article:', targetArticle);
 }
 
-// - - - - - - - C O M M A N D S - - - - - - -
 
-// Make title links collection and assign one event-listener to each link
-const links = document.querySelectorAll('.titles a');
-console.log('links =', links)
-for(let link of links) {
-  link.addEventListener('click', titleClickHandler);
-}
 
 
 
@@ -117,6 +110,20 @@ function generateTitleLinks() {
   titleList.innerHTML = html;
   // console.log('titleList.innerHTML', titleList);
   // LAST COMMIT
+
+// - - - - - - - C O M M A N D S - - - - - - -
+
+// Make title links collection and assign one event-listener to each link
+const links = document.querySelectorAll('.titles a');
+console.log('links =', links)
+for(let link of links) {
+  link.addEventListener('click', titleClickHandler);
+}
+
+
+
+
+
 }
 
 // - - - - - - - C O M M A N D S - - - - - - -
