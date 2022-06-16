@@ -118,11 +118,11 @@
 
     /* START LOOP: for every article: */
     for (let article of articles) {
+      //console.log('article =', article);
 
       /* find tags wrapper */
-      //const tagsList = article.querySelector(optArticleSelector);
-      console.log('article', article);
-
+      const tagsWrapper = article.querySelector(optArticleTagsSelector);
+      console.log('tagsWrapper =', tagsWrapper);
 
       /* make html variable with empty string */
 
