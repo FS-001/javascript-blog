@@ -114,11 +114,15 @@
 
     /* find all articles */
     const articles = document.querySelectorAll(optArticleSelector);
-    console.log('articles =', articles);
+    //console.log('articles =', articles);
 
     /* START LOOP: for every article: */
+    for (let article of articles) {
 
       /* find tags wrapper */
+      //const tagsList = article.querySelector(optArticleSelector);
+      console.log('article', article);
+
 
       /* make html variable with empty string */
 
@@ -137,7 +141,7 @@
       /* insert HTML of all the links into the tags wrapper */
 
     /* END LOOP: for every article: */
-
+    }
   }
 
   generateTags();
