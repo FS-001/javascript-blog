@@ -122,9 +122,11 @@
 
       /* find tags wrapper */
       const tagsWrapper = article.querySelector(optArticleTagsSelector);
-      console.log('tagsWrapper =', tagsWrapper);
+      //console.log('tagsWrapper =', tagsWrapper);
 
       /* make html variable with empty string */
+      let html = '';
+      console.log('html =', html);
 
       /* get tags from data-tags attribute */
 
