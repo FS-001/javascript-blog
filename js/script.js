@@ -162,12 +162,12 @@
 
   // - - - - - - - - - - - - - - - - - - - - - -
   // - - - - - H A N D L E   T A G S - - - - - -
-  // - - - - - -  C L I C K I N G  - - - - - - -
+  // - - - - - -  C L I C K I N G - - - - - - -
   // - - - - - - - - - - - - - - - - - - - - - -
 
   function tagClickHandler(event){
     /* prevent default action for this event */
-    event.preventDefault(); // Do not jump to #addClickListenersToTags
+      event.preventDefault(); // Do not jump to #
 
     /* make new constant named "clickedElement" and give it the value of "this" */
 
