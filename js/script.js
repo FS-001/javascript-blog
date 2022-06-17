@@ -123,6 +123,9 @@
       /* find tags wrapper */
       const tagsWrapper = article.querySelector(optArticleTagsSelector);
       //console.log('tagsWrapper =', tagsWrapper);
+      /* & remove sample links */
+      tagsWrapper.innerHTML = '';
+      console.log('tagsWrapper =', tagsWrapper);
 
       /* make html variable with empty string */
       let html = '';
@@ -134,8 +137,8 @@
 
       /* split tags into array */
       const articleTagsArray = articleTags.split(' ');
-      console.log('articleTagsArray =', articleTagsArray);
-      
+      //console.log('articleTagsArray =', articleTagsArray);
+
       /* START LOOP: for each tag */
 
         /* generate HTML of the link */
