@@ -147,12 +147,14 @@
 
         /* add generated code to html variable */
         html = html + linkHTML;
-        console.log('html', html);
+        //console.log('html', html);
         /* END LOOP: for each tag */
       }
       /* insert HTML of all the links into the tags wrapper */
-
+      tagsWrapper.innerHTML = html;
+      console.log('tagsWrapper.innerHTML =', tagsWrapper.innerHTML);
       /* END LOOP: for every article: */
+      /* NOTE: No spacing between tags! */
     }
   }
 
