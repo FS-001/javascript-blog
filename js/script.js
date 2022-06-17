@@ -125,7 +125,7 @@
       //console.log('tagsWrapper =', tagsWrapper);
       /* & remove sample links */
       tagsWrapper.innerHTML = '';
-      console.log('tagsWrapper =', tagsWrapper);
+      //console.log('tagsWrapper =', tagsWrapper);
 
       /* make html variable with empty string */
       let html = '';
@@ -140,16 +140,18 @@
       //console.log('articleTagsArray =', articleTagsArray);
 
       /* START LOOP: for each tag */
-
+      for (let tag of articleTagsArray) {
         /* generate HTML of the link */
+        const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+        console.log('linkHTML', linkHTML);
 
         /* add generated code to html variable */
 
-      /* END LOOP: for each tag */
-
+        /* END LOOP: for each tag */
+      }
       /* insert HTML of all the links into the tags wrapper */
 
-    /* END LOOP: for every article: */
+      /* END LOOP: for every article: */
     }
   }
 
