@@ -110,7 +110,7 @@
   // - - - F O R   E A C H   A R T I C L E - - -
   // - - - - - - - - - - - - - - - - - - - - - -
 
-  function generateTags(){
+  const generateTags = function () {
 
     /* find all articles */
     const articles = document.querySelectorAll(optArticleSelector);
@@ -156,7 +156,7 @@
       /* END LOOP: for every article: */
       /* NOTE: No spacing between tags! Fixed in .list-horizontal class within style.scss*/
     }
-  }
+  };
 
   generateTags();
 
@@ -165,7 +165,7 @@
   // - - - - - -  C L I C K I N G - - - - - - -
   // - - - - - - - - - - - - - - - - - - - - - -
 
-  function tagClickHandler(event){
+  function tagClickHandler(event) {
     /* prevent default action for this event */
     event.preventDefault(); // Do not jump to #
 
