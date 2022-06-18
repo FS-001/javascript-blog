@@ -123,7 +123,7 @@
       const tagsWrapper = article.querySelector(optArticleTagsSelector);
       //console.log('tagsWrapper =', tagsWrapper);
       /* & remove sample links */
-      tagsWrapper.innerHTML = '';
+      //tagsWrapper.innerHTML = '';
       //console.log('tagsWrapper =', tagsWrapper);
 
       /* make html variable with empty string */
