@@ -165,7 +165,7 @@
   // - - - - - -  C L I C K I N G - - - - - - -
   // - - - - - - - - - - - - - - - - - - - - - -
 
-  function tagClickHandler(event) {
+  const tagClickHandler = function(event) {
     /* prevent default action for this event */
     event.preventDefault(); // Do not jump to #
 
