@@ -194,7 +194,7 @@
     /* END LOOP: for each found tag link */
 
     /* execute function "generateTitleLinks" with article selector as argument */
-  }
+  };
 
   function addClickListenersToTags(){
     /* find all links to tags */
