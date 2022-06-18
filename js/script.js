@@ -46,7 +46,6 @@
   // - -  C R E A T E   T I T L E   L I S T  - -
   // - - - - - - - - - - - - - - - - - - - - - -
 
-  //tags & authors click handler
   const
     optArticleSelector = '.post',
     optTitleSelector = '.post-title',
