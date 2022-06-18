@@ -1,6 +1,5 @@
+'use strict';
 {
-  'use strict';
-
   // - - - - - - - - - - - - - - - - - - - - - -
   // - - - - - S H O W   A R T I C L E - - - - -
   // - - - - A F T E R   C L I C K I N G - - - -
@@ -11,6 +10,7 @@
     event.preventDefault(); // Do not jump to #
     const clickedElement = this;
     //console.log('Link was clicked!');
+
     //remove class 'active' from all article links
     const activeLinks = document.querySelectorAll('.titles a.active');
 
@@ -167,9 +167,11 @@
 
   function tagClickHandler(event){
     /* prevent default action for this event */
-      event.preventDefault(); // Do not jump to #
+    event.preventDefault(); // Do not jump to #
 
     /* make new constant named "clickedElement" and give it the value of "this" */
+    const clickedElement = this;
+    console.log('Link was clicked!');
 
     /* make a new constant "href" and read the attribute "href" of the clicked element */
 
