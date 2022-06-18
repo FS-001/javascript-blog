@@ -53,7 +53,7 @@
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list';
 
-  function generateTitleLinks() {
+  const generateTitleLinks = function () {
 
     //remove contents of titleList
     let titleList = document.querySelector(optTitleListSelector);
@@ -97,7 +97,7 @@
     for(let link of links) {
       link.addEventListener('click', titleClickHandler);
     }
-  }
+  };
 
   // - - - - - - - - - - - - - - - - - - - - - -
   // - - - - - - - C O M M A N D S - - - - - - -
