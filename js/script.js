@@ -195,7 +195,7 @@
     /* execute function "generateTitleLinks" with article selector as argument */
   };
 
-  function addClickListenersToTags(){
+  const addClickListenersToTags = function () {
     /* find all links to tags */
 
     /* START LOOP: for each link */
