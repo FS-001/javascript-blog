@@ -50,7 +50,8 @@
     optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
-    optArticleTagsSelector = '.post-tags .list';
+    optArticleTagsListSelector = '.post-tags .list', //Renamed!
+    optArticleTagsSelector = '.post-tags .list a, .sidebar .tags a'; //reacts for the sidebar tags as well
 
   const generateTitleLinks = function () {
 
@@ -120,7 +121,7 @@
       //console.log('article =', article);
 
       /* find tags wrapper */
-      const tagsWrapper = article.querySelector(optArticleTagsSelector);
+      const tagsWrapper = article.querySelector(optArticleTagsListSelector);
       //console.log('tagsWrapper =', tagsWrapper);
       /* & remove sample links */
       //tagsWrapper.innerHTML = '';
@@ -169,8 +170,8 @@
     event.preventDefault(); // Do not jump to #
 
     /* make new constant named "clickedElement" and give it the value of "this" */
-    const clickedElement = this;
-    //console.log('Link was clicked!');
+    //const clickedElement = this;
+    console.log('Link was clicked!');
 
     /* make a new constant "href" and read the attribute "href" of the clicked element */
 
@@ -200,14 +201,15 @@
   };
 
   const addClickListenersToTags = function () {
-    /* find all links to tags */
+    /* [DONE] find all links to tags */
     const allLinksToTags = document.querySelectorAll(optArticleTagsSelector);
-    console.log('allLinksToTags =', allLinksToTags)
-    /* START LOOP: for each link */
-
-      /* add tagClickHandler as event listener for that link */
-
-    /* END LOOP: for each link */
+    console.log('allLinksToTags =', allLinksToTags);
+    /* [DONE] START LOOP: for each link */
+    for (let link of allLinksToTags) {
+      /* [DONE] add tagClickHandler as event listener for that link */
+      link.addEventListener('click', tagClickHandler);
+      /* [DONE] END LOOP: for each link */
+    }
   };
 
   addClickListenersToTags();
