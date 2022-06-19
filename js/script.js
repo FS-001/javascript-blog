@@ -170,11 +170,12 @@
 
     /* make new constant named "clickedElement" and give it the value of "this" */
     const clickedElement = this;
-    console.log('Link was clicked!');
+    //console.log('Link was clicked!');
 
     /* make a new constant "href" and read the attribute "href" of the clicked element */
 
     /* make a new constant "tag" and extract tag from the "href" constant */
+    //const tag = href.replace('#tag-', '');
 
     /* find all tag links with class active */
 
@@ -183,8 +184,10 @@
       /* remove class active */
 
     /* END LOOP: for each active tag link */
+    //'a.active[href^="#tag-"]'
 
     /* find all tag links with "href" attribute equal to the "href" constant */
+    //'a[href="' + href + '"]'
 
     /* START LOOP: for each found tag link */
 
@@ -193,11 +196,13 @@
     /* END LOOP: for each found tag link */
 
     /* execute function "generateTitleLinks" with article selector as argument */
+    //generateTitleLinks('[data-tags~="' + tag + '"]');
   };
 
   const addClickListenersToTags = function () {
     /* find all links to tags */
-
+    const allLinksToTags = document.querySelectorAll(optArticleTagsSelector);
+    console.log('allLinksToTags =', allLinksToTags)
     /* START LOOP: for each link */
 
       /* add tagClickHandler as event listener for that link */
