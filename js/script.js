@@ -51,7 +51,8 @@
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
     optArticleTagsListSelector = '.post-tags .list', //Renamed!
-    optArticleTagsSelector = '.post-tags .list a, .sidebar .tags a'; //reacts for the sidebar tags as well
+    optArticleTagsSelector = '.post-tags .list a, .sidebar .tags a', //reacts for the sidebar tags as well
+    optArticleAuthorSelector = '.post-author';
 
   const generateTitleLinks = function (customSelector = '') {
 
@@ -219,4 +220,39 @@
   };
 
   addClickListenersToTags();
+
+  // - - - - - - - - - - - - - - - - - - - - - -
+  // - - - G E N E R A T E   A U T H O R S - - -
+  // - - - F O R   E A C H   A R T I C L E - - -
+  // - - - - - - - - - - - - - - - - - - - - - -
+
+  const generateAuthors = function () {
+
+    console.log('generateAuthors function initiated');
+
+    // find all articles
+    const articles = document.querySelectorAll(optArticleSelector);
+    //console.log('articles =', articles);
+
+    // START LOOP: for every article:
+    for (let article of articles) {
+      //console.log('article =', article);
+
+      // find author wrapper
+      const authorWrapper = article.querySelector(optArticleAuthorSelector);
+      //console.log('authorWrapper =', authorWrapper);
+
+      // get author from data-author attribute
+      const articleAuthor = article.getAttribute('data-author');
+      console.log('articleAuthor =', articleAuthor);
+
+      // generate HTML of the link
+      authorWrapper.innerHTML = 'by <a href="#tag-' + articleAuthor + '">' + articleAuthor + '</a>';
+
+    }
+    console.log('generateAuthors function finished');
+  };
+
+  generateAuthors();
+
 }
