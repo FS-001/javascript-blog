@@ -192,14 +192,16 @@
     }
 
     /* find all tag links with "href" attribute equal to the "href" constant */
-    //'a[href="' + href + '"]'
+    const linksWithHref = document.querySelectorAll('a[href="' + href + '"]');
+    console.log(linksWithHref);
 
     /* START LOOP: for each found tag link */
-
+    for (let linkWithHref of linksWithHref) {
       /* add class active */
-
+      linkWithHref.classList.add('active');
     /* END LOOP: for each found tag link */
-
+    }
+    
     /* execute function "generateTitleLinks" with article selector as argument */
     //generateTitleLinks('[data-tags~="' + tag + '"]');
   };
