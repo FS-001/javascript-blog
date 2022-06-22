@@ -46,7 +46,8 @@
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
     optArticleTagsListSelector = '.post-tags .list',
-    optArticleTagsSelector = '.post-tags .list a'; //, .sidebar .tags a
+    optArticleTagsSelector = '.post-tags .list a', //, .sidebar .tags a
+    optArticleAuthorSelector = '.post-author';
 
   const generateTitleLinks = function (customSelector = '') {
 
@@ -137,13 +138,13 @@
 
   const tagClickHandler = function (event) {
 
-    // [DONE] prevent default action for this event
+    // prevent default action for this event
     event.preventDefault();
 
-    // [DONE] make new constant named "clickedElement" and give it the value of "this"
+    // make new constant named "clickedElement" and give it the value of "this"
     const clickedElement = this;
 
-    // [DONE] make a new constant "href" and read the attribute "href" of the clicked element
+    // make a new constant "href" and read the attribute "href" of the clicked element
     const href = clickedElement.getAttribute('href');
 
     // make a new constant "tag" and extract tag from the "href" constant
@@ -185,5 +186,36 @@
   };
 
   addClickListenersToTags();
+
+  // ***************************************************
+  // * GENERATE AUTHOR LINK UNDER EACH ARTICLE'S TITLE *
+  // ***************************************************
+
+  const generateAuthors = function () {
+
+    // find all articles
+    const articles = document.querySelectorAll(optArticleSelector);
+
+    // START LOOP: for every article:
+    for (let article of articles) {
+
+      // find Author wrapper
+      const authorWrapper = article.querySelector(optArticleAuthorSelector);
+
+      // get author from data-author attribute
+      const articleAuthor = article.getAttribute('data-author');
+      //console.log(articleAuthor);
+
+      authorWrapper.innerHTML = 'by <a href="#author-' + articleAuthor + '">' + articleAuthor + '</a>';
+
+    }
+  };
+
+  generateAuthors();
+
+
+
+
+
 
 }
