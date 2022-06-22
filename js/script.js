@@ -1,13 +1,12 @@
 'use strict';
 {
-  // ###########################################
-  // #         S H O W   A R T I C L E         #
-  // #       A F T E R   C L I C K I N G       #
-  // #       R E S P E C T I V E   L I N K     #
-  // ###########################################
+  // ******************************************
+  // * SHOW ARTICLE AFTER CLICK OF TITLE LINK *
+  // ******************************************
 
   const titleClickHandler = function (event) {
-    event.preventDefault(); // Do not jump to #
+
+    event.preventDefault();
     const clickedElement = this;
 
     // remove class 'active' from all active article links
@@ -20,7 +19,7 @@
     // add class 'active' to the clicked link
     clickedElement.classList.add('active');
 
-    // remove class 'active' from all articles
+    // remove class 'active' from all active articles
     const activeArticles = document.querySelectorAll('.posts .post.active');
 
     for (let activeArticle of activeArticles) {
@@ -35,11 +34,12 @@
 
     // add class 'active' to the correct article
     targetArticle.classList.add('active');
+
   };
 
-  // ###########################################
-  // #    C R E A T E   T I T L E   L I S T    #
-  // ###########################################
+  // *********************
+  // * CREATE TITLE LIST *
+  // *********************
 
   const
     optArticleSelector = '.post',
@@ -84,66 +84,54 @@
     for (let link of links) {
       link.addEventListener('click', titleClickHandler);
     }
+
   };
 
   generateTitleLinks();
 
-  /* START LINE OF COMMENT OUT
-
-  // - - - - - - - - - - - - - - - - - - - - - -
-  // - - - - G E N E R A T E   T A G S - - - - -
-  // - - - F O R   E A C H   A R T I C L E - - -
-  // - - - - - - - - - - - - - - - - - - - - - -
+  // **********************************
+  // * GENERATE TAGS FOR EACH ARTICLE *
+  // **********************************
 
   const generateTags = function () {
 
     // find all articles
     const articles = document.querySelectorAll(optArticleSelector);
-    //console.log('articles =', articles);
 
     // START LOOP: for every article:
     for (let article of articles) {
-      //console.log('article =', article);
 
       // find tags wrapper
       const tagsWrapper = article.querySelector(optArticleTagsListSelector);
-      //console.log('tagsWrapper =', tagsWrapper);
-      // & remove sample links
-      //tagsWrapper.innerHTML = '';
-      //console.log('tagsWrapper =', tagsWrapper);
 
       // make html variable with empty string
       let html = '';
-      //console.log('html =', html);
 
       // get tags from data-tags attribute
       const articleTags = article.getAttribute('data-tags');
-      //console.log('articleTags =', articleTags);
 
       // split tags into array
       const articleTagsArray = articleTags.split(' ');
-      //console.log('articleTagsArray =', articleTagsArray);
 
       // START LOOP: for each tag
       for (let tag of articleTagsArray) {
         // generate HTML of the link
         const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
-        //console.log('linkHTML', linkHTML);
 
         // add generated code to html variable
         html = html + linkHTML;
-        //console.log('html', html);
         // END LOOP: for each tag
       }
       // insert HTML of all the links into the tags wrapper
       tagsWrapper.innerHTML = html;
-      //console.log('tagsWrapper.innerHTML =', tagsWrapper.innerHTML);
       // END LOOP: for every article:
       // NOTE: No spacing between tags! Fixed in .list-horizontal class within style.scss
     }
   };
 
   generateTags();
+
+  /* START LINE OF COMMENT OUT
 
   // - - - - - - - - - - - - - - - - - - - - - -
   // - - - - - H A N D L E   T A G S - - - - - -
