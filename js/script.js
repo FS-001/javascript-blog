@@ -89,9 +89,9 @@
 
   generateTitleLinks();
 
-  // **********************************
-  // * GENERATE TAGS FOR EACH ARTICLE *
-  // **********************************
+  // *****************************************
+  // * GENERATE TAG LINKS UNDER EACH ARTICLE *
+  // *****************************************
 
   const generateTags = function () {
 
@@ -131,20 +131,17 @@
 
   generateTags();
 
-  /* START LINE OF COMMENT OUT
-
-  // - - - - - - - - - - - - - - - - - - - - - -
-  // - - - - - H A N D L E   T A G S - - - - - -
-  // - - - - - -  C L I C K I N G - - - - - - -
-  // - - - - - - - - - - - - - - - - - - - - - -
+  // ************************
+  // * HANDLE TAGS CLICKING *
+  // ************************
 
   const tagClickHandler = function (event) {
-    // prevent default action for this event
-    event.preventDefault(); // Do not jump to #
 
-    // make new constant named "clickedElement" and give it the value of "this"
+    // [DONE] prevent default action for this event
+    event.preventDefault();
+
+    // [DONE] make new constant named "clickedElement" and give it the value of "this"
     const clickedElement = this;
-    console.log('Link was clicked!');
 
     // make a new constant "href" and read the attribute "href" of the clicked element
     const href = clickedElement.getAttribute('href');
@@ -188,7 +185,5 @@
   };
 
   addClickListenersToTags();
-
-  END LINE OF COMMENT OUT */
 
 }
