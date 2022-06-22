@@ -1,45 +1,45 @@
 'use strict';
 {
-  // - - - - - - - - - - - - - - - - - - - - - -
-  // - - - - - S H O W   A R T I C L E - - - - -
-  // - - - - A F T E R   C L I C K I N G - - - -
-  // - - - - R E S P E C T I V E   L I N K - - -
-  // - - - - - - - - - - - - - - - - - - - - - -
+  // ###########################################
+  // #         S H O W   A R T I C L E         #
+  // #       A F T E R   C L I C K I N G       #
+  // #       R E S P E C T I V E   L I N K     #
+  // ###########################################
 
   const titleClickHandler = function (event) {
     event.preventDefault(); // Do not jump to #
     const clickedElement = this;
 
-    //remove class 'active' from all active article links
+    // remove class 'active' from all active article links
     const activeLinks = document.querySelectorAll('.titles a.active');
 
     for (let activeLink of activeLinks) {
       activeLink.classList.remove('active');
     }
 
-    //add class 'active' to the clicked link
+    // add class 'active' to the clicked link
     clickedElement.classList.add('active');
 
-    //remove class 'active' from all articles
+    // remove class 'active' from all articles
     const activeArticles = document.querySelectorAll('.posts .post.active');
 
     for (let activeArticle of activeArticles) {
       activeArticle.classList.remove('active');
     }
 
-    //get 'href' attribute from the clicked link
+    // get 'href' attribute from the clicked link
     const articleSelector = clickedElement.getAttribute('href');
 
-    //find the correct article using the selector (value of 'href' attribute)
+    // find the correct article using the selector (value of 'href' attribute)
     const targetArticle = document.querySelector(articleSelector);
 
-    //add class 'active' to the correct article
+    // add class 'active' to the correct article
     targetArticle.classList.add('active');
   };
 
-  // - - - - - - - - - - - - - - - - - - - - - -
-  // - -  C R E A T E   T I T L E   L I S T  - -
-  // - - - - - - - - - - - - - - - - - - - - - -
+  // ###########################################
+  // #    C R E A T E   T I T L E   L I S T    #
+  // ###########################################
 
   const
     optArticleSelector = '.post',
@@ -50,45 +50,41 @@
 
   const generateTitleLinks = function (customSelector = '') {
 
-    //remove contents of titleList
+    // remove contents of titleList
     let titleList = document.querySelector(optTitleListSelector);
     titleList.innerHTML = '';
 
-    //for each article
+    // for each article
     const articles = document.querySelectorAll(optArticleSelector + customSelector);
 
     let html = '';
 
     for (let article of articles) {
-      //get the article id
+      // get the article id
       const articleId = article.getAttribute('id');
 
-      //find the title element
-      //& get the title from the title element
+      // find the title element
+      // get the title from the title element
       const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
-      //create HTML of the link
+      // create HTML of the link
       const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
 
-      //insert link into titleList
-      //titleList.innerHTML = titleList.innerHTML + linkHTML;
-      //titleList.insertAdjacentHTML('beforeend', linkHTML);
+      // insert link into titleList
+      // titleList.innerHTML = titleList.innerHTML + linkHTML;
+      // titleList.insertAdjacentHTML('beforeend', linkHTML);
       html = html + linkHTML;
     }
 
-    //create titleList content
+    // create titleList content
     titleList.innerHTML = html;
 
-    //Make title links collection and assign one event-listener to each link
+    // make title links collection and assign one event-listener to each link
     const links = document.querySelectorAll('.titles a');
     for (let link of links) {
       link.addEventListener('click', titleClickHandler);
     }
   };
-
-  // - - - - - - - - - - - - - - - - - - - - - -
-  // - - - - - - - C O M M A N D S - - - - - - -
-  // - - - - - - - - - - - - - - - - - - - - - -
 
   generateTitleLinks();
 
