@@ -49,7 +49,9 @@
     optArticleTagsSelector = '.post-tags .list a', //, .sidebar .tags a
     optArticleAuthorSelector = '.post-author',
     optArticleAuthorLinkSelector = '.post-author a',
-    optTagsListSelector = '.tags.list'; //tags list in the right column
+    optTagsListSelector = '.tags.list', //tags list in the right column
+    optCloudClassCount = 5,
+    optCloudClassPrefix = 'tag-size-';
 
   const generateTitleLinks = function (customSelector = '') {
 
@@ -91,6 +93,35 @@
   };
 
   generateTitleLinks();
+
+  // ********************************************
+  // * CALCULATE MIN AND MAX OF TAGS APPEARANCE *
+  // ********************************************
+
+  const calculateTagsParams = function (tags) {
+    const params = { max: 0, min: 999999};
+    //LOOP: for all tags: if appearance > max {max = appearance}, if appearance < min {min < appearance}
+    for(let tag in tags){
+      //console.log(tag + ' is used ' + tags[tag] + ' times'); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      if (tags[tag] > params.max) {params.max = tags[tag]}
+      if (tags[tag] < params.min) {params.min = tags[tag]}
+    }
+    return params;
+  };
+
+
+
+
+  // *****************************************
+  // * GENERATE TAG LINKS UNDER EACH ARTICLE *
+  // *****************************************
+
+  const generateTagClass = function (count, params) {
+
+  }
+
+
+
 
   // *****************************************
   // * GENERATE TAG LINKS UNDER EACH ARTICLE *
@@ -147,6 +178,9 @@
     /* [NEW] find list of tags in right column */
     const tagList = document.querySelector(optTagsListSelector);
 
+    const tagsParams = calculateTagsParams(allTags); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    console.log('tagsParams:', tagsParams); //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
     // [NEW] create variable for all links HTML code
     let allTagsHTML = '';
 
@@ -155,7 +189,7 @@
       // [NEW] generate code of a link and add it to allTagsHTML
       allTagsHTML += '<a href="#tag-' + tag + '">' + tag + '</a>' + ' (' + allTags[tag] + ') ';
       // allTagsHTML += tag + ' (' + allTags[tag] + ') ';
-      console.log(allTagsHTML);
+      //console.log(allTagsHTML);
     }
     // [NEW] END LOOP: for each tag in allTags:
 
