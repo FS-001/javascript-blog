@@ -263,7 +263,9 @@
 
     */
     // execute function "generateTitleLinks" with article selector as argument
-    generateTitleLinks('[post-author~="' + href + '"]');
+    generateTitleLinks('[data-author="' + authorHref + '"]');
+
+    //generateTitleLinks('[data-tags~="' + tagHref + '"]');
 
   };
 
