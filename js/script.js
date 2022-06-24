@@ -113,19 +113,21 @@
 
 
   // *****************************************
-  // * GENERATE TAG LINKS UNDER EACH ARTICLE *
+  // *          CALCULATE TAG CLASS          *
   // *****************************************
 
-  const generateTagClass = function (count, params) {
-
+  const calculateTagClass = function (count, params) {
+    //console.log('Input parameter "count": ', count);
+    //console.log('Input parameter "params": ', params);
+    return count; //for now extremely simplified
   }
 
 
 
 
-  // *****************************************
-  // * GENERATE TAG LINKS UNDER EACH ARTICLE *
-  // *****************************************
+  // **************************************************************
+  // * GENERATE TAG LINKS UNDER EACH ARTICLE & IN THE RIGHT PANEL *
+  // **************************************************************
 
   const generateTags = function () {
 
@@ -187,9 +189,9 @@
     // [NEW] START LOOP: for each tag in allTags:
     for(let tag in allTags){
       // [NEW] generate code of a link and add it to allTagsHTML
-      allTagsHTML += '<a href="#tag-' + tag + '">' + tag + '</a>' + ' (' + allTags[tag] + ') ';
+      allTagsHTML += '<a ' + 'class="' + optCloudClassPrefix + calculateTagClass(allTags[tag], tagsParams) + '" ' + 'href="#tag-' + tag + '">' + tag + '</a>' + ' (' + allTags[tag] + ') ';
       // allTagsHTML += tag + ' (' + allTags[tag] + ') ';
-      //console.log(allTagsHTML);
+      console.log(allTagsHTML);
     }
     // [NEW] END LOOP: for each tag in allTags:
 
