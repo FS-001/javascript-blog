@@ -117,9 +117,10 @@
   // *****************************************
 
   const calculateTagClass = function (count, params) {
-    //console.log('Input parameter "count": ', count);
-    //console.log('Input parameter "params": ', params);
-    return count; //for now extremely simplified
+    console.log('Input parameter "count": ', count);
+    console.log('Input parameter "params.max": ', params.max);
+    console.log('Input parameter "params.min": ', params.min);
+    return Math.floor((count-params.min)/(params.max-params.min)*(optCloudClassCount-1)+1)
   }
 
 
