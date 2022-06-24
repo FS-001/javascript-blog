@@ -190,7 +190,8 @@
     // [NEW] START LOOP: for each tag in allTags:
     for(let tag in allTags){
       // [NEW] generate code of a link and add it to allTagsHTML
-      allTagsHTML += '<a ' + 'class="' + optCloudClassPrefix + calculateTagClass(allTags[tag], tagsParams) + '" ' + 'href="#tag-' + tag + '">' + tag + '</a>' + ' (' + allTags[tag] + ') ';
+      allTagsHTML += '<a ' + 'class="' + optCloudClassPrefix + calculateTagClass(allTags[tag], tagsParams) + '" ' + 'href="#tag-' + tag + '">' + tag + '</a>' + ' ';
+      //allTagsHTML += '<a ' + 'class="' + optCloudClassPrefix + calculateTagClass(allTags[tag], tagsParams) + '" ' + 'href="#tag-' + tag + '">' + tag + '</a>' + ' (' + allTags[tag] + ') ';
       // allTagsHTML += tag + ' (' + allTags[tag] + ') ';
       console.log(allTagsHTML);
     }
