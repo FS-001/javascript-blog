@@ -1,7 +1,10 @@
 const templates = {
   articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
 
-  tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML)
+  tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
+
+  authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML)
+
 }
 
 //const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
@@ -282,7 +285,9 @@ const templates = {
       const articleAuthor = article.getAttribute('data-author');
       //console.log(articleAuthor);
 
-      authorWrapper.innerHTML = 'by <a href="#author-' + articleAuthor + '">' + articleAuthor + '</a>';
+      //authorWrapper.innerHTML = 'by <a href="#author-' + articleAuthor + '">' + articleAuthor + '</a>';
+      const linkHTMLData = {authorT: articleAuthor};
+      authorWrapper.innerHTML = templates.authorLink(linkHTMLData);
 
       // [25.06.2022] Add link
       //const count = 1;
