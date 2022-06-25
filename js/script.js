@@ -1,3 +1,9 @@
+const templates = {
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML)
+}
+
+//const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+
 'use strict';
 {
   // ******************************************
@@ -74,8 +80,9 @@
       const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
       // create HTML of the link
-      const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-
+      //const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+      const linkHTMLData = {id: articleId, title: articleTitle};
+      const linkHTML = templates.articleLink(linkHTMLData);
       // insert link into titleList
       // titleList.innerHTML = titleList.innerHTML + linkHTML;
       // titleList.insertAdjacentHTML('beforeend', linkHTML);
