@@ -3,7 +3,9 @@ const templates = {
 
   tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
 
-  authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML)
+  authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
+
+  tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML)
 
 }
 
@@ -193,17 +195,27 @@ const templates = {
     const tagsParams = calculateTagsParams(allTags);
 
     // [NEW] create variable for all links HTML code
-    let allTagsHTML = '';
+    //let allTagsHTML = '';
+    const allTagsData = {tags: []};
 
     // [NEW] START LOOP: for each tag in allTags:
     for(let tag in allTags){
       // [NEW] generate code of a link and add it to allTagsHTML
-      allTagsHTML += '<li><a ' + 'class="' + optCloudClassPrefix + calculateTagClass(allTags[tag], tagsParams) + '" ' + 'href="#tag-' + tag + '">' + tag + '</a></li>' + ' ';
+      //allTagsHTML += '<li><a ' + 'class="' + optCloudClassPrefix + calculateTagClass(allTags[tag], tagsParams) + '" ' + 'href="#tag-' + tag + '">' + tag + '</a></li>' + ' ';
+      // handlebars replacement below
+      allTagsData.tags.push({
+        tag: tag,
+        count: allTags[tag],
+        className: calculateTagClass(allTags[tag], tagsParams)
+      });
     }
     // [NEW] END LOOP: for each tag in allTags:
 
     // [NEW] add HTML from allTagsHTML to tagList
-    tagList.innerHTML = allTagsHTML;
+    //tagList.innerHTML = allTagsHTML;
+    // handlebars replacement below
+    tagList.innerHTML = templates.tagCloudLink(allTagsData);
+    // searching for  className count tag-size
   };
 
   generateTags();
