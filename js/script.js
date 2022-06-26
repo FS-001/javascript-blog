@@ -192,6 +192,7 @@ const templates = {
     /* [NEW] find list of tags in right column */
     const tagList = document.querySelector(optTagsListSelector);
 
+    // calculate min and max appearance of all tags
     const tagsParams = calculateTagsParams(allTags);
 
     // [NEW] create variable for all links HTML code
@@ -209,6 +210,7 @@ const templates = {
         className: calculateTagClass(allTags[tag], tagsParams)
       });
     }
+
     // [NEW] END LOOP: for each tag in allTags:
 
     // [NEW] add HTML from allTagsHTML to tagList
