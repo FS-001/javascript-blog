@@ -5,9 +5,10 @@ const templates = {
 
   authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
 
-  tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML)
+  tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML),
 
-}
+  authorsLink: Handlebars.compile(document.querySelector('#template-authors-link').innerHTML)
+};
 
 //const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
 
@@ -117,8 +118,8 @@ const templates = {
     const params = { max: 0, min: 999999};
     //LOOP: for all tags: if appearance > max {max = appearance}, if appearance < min {min < appearance}
     for(let tag in tags){
-      if (tags[tag] > params.max) {params.max = tags[tag]}
-      if (tags[tag] < params.min) {params.min = tags[tag]}
+      if (tags[tag] > params.max) {params.max = tags[tag];}
+      if (tags[tag] < params.min) {params.min = tags[tag];}
     }
     return params;
   };
@@ -131,8 +132,8 @@ const templates = {
     //console.log('Input parameter "count": ', count);
     //console.log('Input parameter "params.max": ', params.max);
     //console.log('Input parameter "params.min": ', params.min);
-    return Math.floor((count-params.min)/(params.max-params.min)*(optCloudClassCount-1)+1)
-  }
+    return Math.floor((count-params.min)/(params.max-params.min)*(optCloudClassCount-1)+1);
+  };
 
   // **************************************************************
   // * GENERATE TAG LINKS UNDER EACH ARTICLE & IN THE RIGHT PANEL *
@@ -168,27 +169,27 @@ const templates = {
         const linkHTMLData = {tagT: tag};
         const linkHTML = templates.tagLink(linkHTMLData);
 
-
         // add generated code to html variable
         html = html + linkHTML;
 
         // [NEW] check if this link is NOT already in allTags
         if(!allTags[tag]) {
           /* [NEW] add tag to allTags object */
-            allTags[tag] = 1;
+          allTags[tag] = 1;
         } else {
           allTags[tag]++;
         }
 
         // END LOOP: for each tag
       }
+
       // insert HTML of all the links into the tags wrapper
       tagsWrapper.innerHTML = html;
 
       // END LOOP: for every article:
       // NOTE: No spacing between tags! Fixed in .list-horizontal class within style.scss
     }
-
+    //console.log(allTags);
     /* [NEW] find list of tags in right column */
     const tagList = document.querySelector(optTagsListSelector);
 
@@ -217,6 +218,7 @@ const templates = {
     //tagList.innerHTML = allTagsHTML;
     // handlebars replacement below
     tagList.innerHTML = templates.tagCloudLink(allTagsData);
+    //console.log(tagList.innerHTML);
     // searching for  className count tag-size
   };
 
@@ -283,8 +285,9 @@ const templates = {
 
   const generateAuthors = function () {
 
-    // [OBJECT] Make new variable - empty table
+    // [OBJECT] Make new variable - empty object (previously table)
     let allAuthors = {};
+    //console.log(allAuthors);
 
     // find all articles
     const articles = document.querySelectorAll(optArticleSelector);
@@ -301,11 +304,15 @@ const templates = {
 
       //authorWrapper.innerHTML = 'by <a href="#author-' + articleAuthor + '">' + articleAuthor + '</a>';
       const linkHTMLData = {authorT: articleAuthor};
+      //console.log(linkHTMLData);
       authorWrapper.innerHTML = templates.authorLink(linkHTMLData);
+      //console.log(authorWrapper);
 
       // [25.06.2022] Add link
       //const count = 1;
-      const linkHTML = '<li>'+'<a href="#author-' + articleAuthor + '">' + articleAuthor + '</a>' + ' (' + 'count' + ')' + '</li>';
+      //below command probably should be deleted. Check it!
+      //const linkHTML = '<li>'+'<a href="#author-' + articleAuthor + '">' + articleAuthor + '</a>' + ' (' + 'count' + ')' + '</li>';
+
       if(!allAuthors[articleAuthor]) {
         allAuthors[articleAuthor] = 1;
       } else {
@@ -313,16 +320,38 @@ const templates = {
       }
 
     }
-      // [25.06.2022] find list of authors in right column
-       const authorsList = document.querySelector(optAuthorsListSelector);
+    //console.log(allAuthors);
 
-      // [25.06.2022] add HTML from allTagsHTML to tagList
+    // [DONE] find list of authors in right column
+    const authorsList = document.querySelector(optAuthorsListSelector);
 
-      let allAuthorsHTML ='';
-      for (let articleAuthor in allAuthors) {
-        allAuthorsHTML += '<li>'+'<a href="#author-' + articleAuthor + '">' + articleAuthor + '</a>' + ' (' + allAuthors[articleAuthor] + ')' + '</li>';
-      }
-      authorsList.innerHTML = allAuthorsHTML;
+    // [25.06.2022 NEEDED???] add HTML from allAuthorsHTML to authorsList
+    let allAuthorsHTML ='';
+
+    // [27.06.2022]
+    const allAuthorsData = {authors: []};
+    //console.log(allAuthorsData);
+
+    for (let articleAuthor in allAuthors) {
+      //allAuthorsHTML += '<li>'+'<a href="#author-' + articleAuthor + '">' + articleAuthor + '</a>' + ' (' + allAuthors[articleAuthor] + ')' + '</li>';
+
+      // handlebars replacement below
+      allAuthorsData.authors.push({
+        author: articleAuthor,
+        count: allAuthors[articleAuthor],
+      });
+    }
+    console.log(allAuthorsData);
+    // [27.06.2022 BELOW LINE COMMENTED OUT]
+    //authorsList.innerHTML = allAuthorsHTML;
+
+    authorsList.innerHTML = templates.authorsLink(allAuthorsData);
+    //authorsList.innerHTML = 'Hello!';
+
+    // [NEW] add HTML from allTagsHTML to tagList
+    //tagList.innerHTML = allTagsHTML;
+    // handlebars replacement below
+    //tagList.innerHTML = templates.tagCloudLink(allTagsData);
 
   };
 

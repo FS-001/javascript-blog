@@ -278,7 +278,9 @@
         </div>
     </div>
 
-    //My first template
+    <!--HANDLEBARS TEMPLATES-->
+    <!--My first template-->
+
     <script id="template-article-link" type="text/x-handlebars-template">
       <li><a href="#{{ id }}"><span>{{ title }}</span></a></li>
     </script>
@@ -291,18 +293,17 @@
       by <a href="#author-{{ authorT }}">{{ authorT }}</a>
     </script>
 
-
     <script id="template-tag-cloud-link" type="text/x-handlebars-template">
       {{#each tags}}
-      <li><a class="tag-size-{{ className }} " href="#tag-{{ tag }}">{{ tag }}</a></li>
+      <li><a class="tag-size-{{ className }}" href="#tag-{{ tag }}">{{ tag }}</a></li>
       {{/each}}
     </script>
 
     <script id="template-authors-link" type="text/x-handlebars-template">
-
-
+      {{#each authors}}
+        <li><a href="#author-{{ author }}" class="author-name">{{ author }}</span></a> ({{ count }})</li>
+      {{/each}}
     </script>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
     <script src="js/script.js"></script>
