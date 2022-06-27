@@ -65,7 +65,7 @@ const templates = {
     optArticleAuthorLinkSelector = '.post-author a',
     optTagsListSelector = '.tags.list', //tags list in the right column
     optCloudClassCount = 5,
-    optCloudClassPrefix = 'tag-size-',
+    //optCloudClassPrefix = 'tag-size-',
     optAuthorsListSelector = '.authors.list'; //authors list in the right column
 
   const generateTitleLinks = function (customSelector = '') {
@@ -326,7 +326,7 @@ const templates = {
     const authorsList = document.querySelector(optAuthorsListSelector);
 
     // [25.06.2022 NEEDED???] add HTML from allAuthorsHTML to authorsList
-    let allAuthorsHTML ='';
+    //let allAuthorsHTML ='';
 
     // [27.06.2022]
     const allAuthorsData = {authors: []};
